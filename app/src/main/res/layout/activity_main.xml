@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".controller.MainActivity">
+
+    <Button
+        android:id="@+id/mentorsButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="4dp"
+        android:text="@string/mentors"
+        android:layout_marginEnd="15sp"
+        app:layout_constraintBottom_toBottomOf="@+id/mentorsView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/mentorsView"
+        app:layout_constraintTop_toTopOf="@+id/mentorsView"
+        android:onClick="toMentors"/>
+
+    <Button
+        android:id="@+id/classesButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="@string/classes"
+        android:layout_marginEnd="15sp"
+        app:layout_constraintBottom_toBottomOf="@+id/classesView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/classesView"
+        app:layout_constraintTop_toTopOf="@+id/classesView"
+        android:onClick="toClasses"/>
+
+    <Button
+        android:id="@+id/termsButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="@string/terms"
+        android:layout_marginEnd="15sp"
+        app:layout_constraintBottom_toBottomOf="@+id/termsView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/termsView"
+        app:layout_constraintTop_toTopOf="@+id/termsView"
+        android:onClick="toTerms"/>
+
+    <Button
+        android:id="@+id/assessmentsButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="@string/assessments"
+        android:layout_marginEnd="15sp"
+        app:layout_constraintBottom_toBottomOf="@+id/assessmentsView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/assessmentsView"
+        app:layout_constraintTop_toTopOf="@+id/assessmentsView"
+        android:onClick="toAssessments"/>
+
+    <ImageView
+        android:id="@+id/termsView"
+        android:layout_width="125sp"
+        android:layout_height="125sp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="150dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/calendar"
+        android:contentDescription="@string/terms_icon" />
+
+
+    <ImageView
+        android:id="@+id/classesView"
+        android:layout_width="125sp"
+        android:layout_height="125sp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/termsView"
+        app:srcCompat="@drawable/classesart"
+        android:onClick="toClasses"
+        android:contentDescription="@string/classes_icon" />
+
+    <ImageView
+        android:id="@+id/assessmentsView"
+        android:layout_width="125sp"
+        android:layout_height="125sp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/classesView"
+        app:srcCompat="@drawable/test"
+        android:contentDescription="@string/assessments_icon" />
+
+    <ImageView
+        android:id="@+id/mentorsView"
+        android:layout_width="125sp"
+        android:layout_height="125sp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/assessmentsView"
+        app:srcCompat="@drawable/owlteacher"
+        android:contentDescription="@string/mentors_icon" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="125dp"
+        android:layout_height="123dp"
+        app:layout_constraintBottom_toTopOf="@+id/termsView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/hogwarts_logo" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

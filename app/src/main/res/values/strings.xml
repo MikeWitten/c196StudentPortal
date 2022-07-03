@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">StudentPortal</string>
+    <string name="assessments">Assessments</string>
+    <string name="terms">Terms</string>
+    <string name="classes">Classes</string>
+    <string name="mentors">Mentors</string>
+    <string name="calendar_icon">Calendar icon</string>
+    <string name="classes_icon">Classes icon</string>
+    <string name="assessments_icon">Assessments icon</string>
+    <string name="mentors_icon">Mentors icon</string>
+    <string name="terms_icon">Terms Icon</string>
+</resources>
