@@ -1,27 +1,34 @@
 package com.wittenportfolio.c196studentportal.model;
 
-import android.arch.persistence.room.ColumnInfo;
-import android.arch.persistence.room.Entity;
-import android.arch.persistence.room.PrimaryKey;
+
+import android.os.Build;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
+@RequiresApi(api = Build.VERSION_CODES.O)
 @Entity(tableName = "Assessments")
 public class Assessment {
-    @PrimaryKey(autoGenerate = true)
-    private Integer id;
-    @ColumnInfo(name = "title")
-    private String title;
-    @ColumnInfo(name = "type")
-    private EvalType type;
-    @ColumnInfo(name = "startDate")
-    private String startDate;
-    @ColumnInfo(name = "endDate")
-    private String endDate;
+    public static final DateTimeFormatter formatter = DateTimeFormatter.ISO_DATE;
 
-    public Assessment(Integer id, String title, EvalType type, String startDate, String endDate) {
+    @PrimaryKey(autoGenerate = true)
+    public int id;
+    @ColumnInfo(name = "title")
+    public String title;
+    @ColumnInfo(name = "type")
+    public EvalType type;
+    @ColumnInfo(name = "startDate")
+    public LocalDate startDate;
+    @ColumnInfo(name = "endDate")
+    public LocalDate endDate;
+
+    public Assessment(Integer id, String title, EvalType type, LocalDate startDate, LocalDate endDate) {
         this.id = id;
         this.title = title;
         this.type = type;
@@ -29,7 +36,7 @@ public class Assessment {
         this.endDate = endDate;
     }
 
-    public Integer getId() {return id;}
+    public int getId() {return id;}
 
     public String getTitle() {
         return title;
@@ -47,19 +54,19 @@ public class Assessment {
         this.type = type;
     }
 
-    public String getStartDate() {
+    public LocalDate getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(String startDate) {
+    public void setStartDate(LocalDate startDate) {
         this.startDate = startDate;
     }
 
-    public String getEndDate() {
+    public LocalDate getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(String endDate) {
+    public void setEndDate(LocalDate endDate) {
         this.endDate = endDate;
     }
 
@@ -70,8 +77,8 @@ public class Assessment {
                 "id=" + id +
                 ", title='" + title + '\'' +
                 ", type=" + type +
-                ", startDate=" + startDate +
-                ", endDate=" + endDate +
+                ", startDate=" + formatter.format(startDate) +
+                ", endDate=" + formatter.format(endDate) +
                 '}';
     }
 }

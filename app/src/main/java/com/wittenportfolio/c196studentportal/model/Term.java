@@ -1,44 +1,52 @@
 package com.wittenportfolio.c196studentportal.model;
 
-import android.arch.persistence.room.ColumnInfo;
-import android.arch.persistence.room.Entity;
-import android.arch.persistence.room.PrimaryKey;
+import android.os.Build;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
+@RequiresApi(api = Build.VERSION_CODES.O)
 @Entity(tableName = "Terms")
 public class Term {
+    public static final DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE;
+
     @PrimaryKey(autoGenerate = true)
-    private Integer id;
+    public int id;
     @ColumnInfo(name= "name")
-    private String termName;
+    public String termName;
     @ColumnInfo (name = "startDate")
-    private String startDate;
+    public LocalDate startDate;
     @ColumnInfo(name = "endDate")
-    private String endDate;
+    public LocalDate endDate;
 
 
 
-    public Term(String startDate, String endDate, String termName, Integer id) {
+    public Term(LocalDate startDate, LocalDate endDate, String termName, Integer id) {
         this.startDate = startDate;
         this.endDate = endDate;
         this.termName = termName;
         this.id = id;
     }
 
-    public String getStartDate() {
+    public LocalDate getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(String startDate) {
+    public void setStartDate(LocalDate startDate) {
         this.startDate = startDate;
     }
 
-    public String getEndDate() {
+    public LocalDate getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(String endDate) {
+    public void setEndDate(LocalDate endDate) {
         this.endDate = endDate;
     }
 
@@ -50,11 +58,11 @@ public class Term {
         this.termName = termName;
     }
 
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -64,8 +72,8 @@ public class Term {
         return "Term{" +
                 "id=" + id +
                 ", termName='" + termName + '\'' +
-                ", startDate=" + startDate +
-                ", endDate=" + endDate +
+                ", startDate=" + formatter.format(startDate) +
+                ", endDate=" + formatter.format(endDate) +
                 '}';
     }
 }

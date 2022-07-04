@@ -1,62 +1,68 @@
 package com.wittenportfolio.c196studentportal.model;
 
-import android.arch.persistence.room.ColumnInfo;
-import android.arch.persistence.room.Entity;
-import android.arch.persistence.room.PrimaryKey;
+import android.os.Build;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+@RequiresApi(api = Build.VERSION_CODES.O)
 @Entity(tableName = "Classes")
 public class Course {
-    @PrimaryKey(autoGenerate = true)
-    private Integer id;
-    @ColumnInfo(name = "title")
-    private String Title;
-    @ColumnInfo(name = "startDate")
-    private String startDate;
-    @ColumnInfo(name = "endDate")
-    private String endDate;
-    @ColumnInfo(name = "status")
-    private ClassStatus status;
-    @ColumnInfo(name = "mentor_ID")
-    private Integer mentorID;
+    public static final DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE;
 
-    public Course(Integer id, String title, String startDate, String endDate, ClassStatus status, Integer mentorID) {
+    @PrimaryKey(autoGenerate = true)
+    public int id;
+    @ColumnInfo(name = "title")
+    public String title;
+    @ColumnInfo(name = "startDate")
+    public LocalDate startDate;
+    @ColumnInfo(name = "endDate")
+    public LocalDate endDate;
+    @ColumnInfo(name = "status")
+    public ClassStatus status;
+    @ColumnInfo(name = "mentor_ID")
+    public int mentorID;
+
+    public Course(Integer id, String title, LocalDate startDate, LocalDate endDate, ClassStatus status, Integer mentorID) {
         this.id = id;
-        Title = title;
+        title = title;
         this.startDate = startDate;
         this.endDate = endDate;
         this.status = status;
         this.mentorID = mentorID;
     }
 
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
     public String getTitle() {
-        return Title;
+        return title;
     }
 
     public void setTitle(String title) {
-        Title = title;
+        title = title;
     }
 
-    public String getStartDate() {
+    public LocalDate getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(String startDate) {
+    public void setStartDate(LocalDate startDate) {
         this.startDate = startDate;
     }
 
-    public String getEndDate() {
+    public LocalDate getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(String endDate) {
+    public void setEndDate(LocalDate endDate) {
         this.endDate = endDate;
     }
 
@@ -68,11 +74,11 @@ public class Course {
         this.status = status;
     }
 
-    public Integer getMentorID() {
+    public int getMentorID() {
         return mentorID;
     }
 
-    public void setMentorID(Integer mentorID) {
+    public void setMentorID(int mentorID) {
         this.mentorID = mentorID;
     }
 
@@ -111,9 +117,9 @@ public class Course {
     public String toString() {
         return "Class{" +
                 "id=" + id +
-                ", Title='" + Title + '\'' +
-                ", startDate=" + startDate +
-                ", endDate=" + endDate +
+                ", Title='" + title + '\'' +
+                ", startDate=" + formatter.format(startDate) +
+                ", endDate=" + formatter.format(endDate) +
                 ", status=" + status +
                 ", mentorID=" + mentorID +
                 '}';

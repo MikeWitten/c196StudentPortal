@@ -7,23 +7,22 @@ import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import androidx.room.Update;
 
-import com.wittenportfolio.c196studentportal.model.Term;
+import com.wittenportfolio.c196studentportal.model.Mentor;
 
 import java.util.List;
 
 @Dao
-public interface TermDAO {
+public interface MentorDAO {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    void insert(Term term);
+    void insert(Mentor mentor);
 
     @Update
-    void update(Term term);
+    void update(Mentor mentor);
 
     @Delete
-    void delete(Term term);
+    void remove(Mentor mentor);
 
-    @Query("SELECT * FROM Terms ORDER BY id")
-    List<Term> getAllTerms();
-
-    }
+    @Query("SELECT * FROM Mentors")
+    List<Mentor> getAllMentors();
+}
 

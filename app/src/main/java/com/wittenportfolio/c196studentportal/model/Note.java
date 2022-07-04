@@ -1,6 +1,6 @@
 package com.wittenportfolio.c196studentportal.model;
 
-import android.arch.persistence.room.Entity;
+
 
 public class Note {
     private Integer id;
