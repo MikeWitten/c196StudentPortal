@@ -1,17 +1,29 @@
 package com.wittenportfolio.c196studentportal.model;
 
+import android.arch.persistence.room.ColumnInfo;
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.PrimaryKey;
+
+import androidx.annotation.NonNull;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
-
-public class Class {
+@Entity(tableName = "Classes")
+public class Course {
+    @PrimaryKey(autoGenerate = true)
     private Integer id;
+    @ColumnInfo(name = "title")
     private String Title;
-    private LocalDate startDate;
-    private LocalDate endDate;
+    @ColumnInfo(name = "startDate")
+    private String startDate;
+    @ColumnInfo(name = "endDate")
+    private String endDate;
+    @ColumnInfo(name = "status")
     private ClassStatus status;
+    @ColumnInfo(name = "mentor_ID")
     private Integer mentorID;
 
-    public Class(Integer id, String title, LocalDate startDate, LocalDate endDate, ClassStatus status, Integer mentorID) {
+    public Course(Integer id, String title, String startDate, String endDate, ClassStatus status, Integer mentorID) {
         this.id = id;
         Title = title;
         this.startDate = startDate;
@@ -24,10 +36,6 @@ public class Class {
         return id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
     public String getTitle() {
         return Title;
     }
@@ -36,19 +44,19 @@ public class Class {
         Title = title;
     }
 
-    public LocalDate getStartDate() {
+    public String getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(LocalDate startDate) {
+    public void setStartDate(String startDate) {
         this.startDate = startDate;
     }
 
-    public LocalDate getEndDate() {
+    public String getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(LocalDate endDate) {
+    public void setEndDate(String endDate) {
         this.endDate = endDate;
     }
 
@@ -96,5 +104,18 @@ public class Class {
 
     public static void deleteNote(Note note){
         classNotes.remove(note);
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return "Class{" +
+                "id=" + id +
+                ", Title='" + Title + '\'' +
+                ", startDate=" + startDate +
+                ", endDate=" + endDate +
+                ", status=" + status +
+                ", mentorID=" + mentorID +
+                '}';
     }
 }

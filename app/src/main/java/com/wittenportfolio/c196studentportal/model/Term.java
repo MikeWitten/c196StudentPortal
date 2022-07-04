@@ -1,33 +1,44 @@
 package com.wittenportfolio.c196studentportal.model;
 
-import java.time.LocalDate;
+import android.arch.persistence.room.ColumnInfo;
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.PrimaryKey;
 
+import androidx.annotation.NonNull;
+
+@Entity(tableName = "Terms")
 public class Term {
-    private LocalDate startDate;
-    private LocalDate endDate;
-    private String termName;
+    @PrimaryKey(autoGenerate = true)
     private Integer id;
+    @ColumnInfo(name= "name")
+    private String termName;
+    @ColumnInfo (name = "startDate")
+    private String startDate;
+    @ColumnInfo(name = "endDate")
+    private String endDate;
 
-    public Term(LocalDate startDate, LocalDate endDate, String termName, Integer id) {
+
+
+    public Term(String startDate, String endDate, String termName, Integer id) {
         this.startDate = startDate;
         this.endDate = endDate;
         this.termName = termName;
         this.id = id;
     }
 
-    public LocalDate getStartDate() {
+    public String getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(LocalDate startDate) {
+    public void setStartDate(String startDate) {
         this.startDate = startDate;
     }
 
-    public LocalDate getEndDate() {
+    public String getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(LocalDate endDate) {
+    public void setEndDate(String endDate) {
         this.endDate = endDate;
     }
 
@@ -45,5 +56,16 @@ public class Term {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return "Term{" +
+                "id=" + id +
+                ", termName='" + termName + '\'' +
+                ", startDate=" + startDate +
+                ", endDate=" + endDate +
+                '}';
     }
 }

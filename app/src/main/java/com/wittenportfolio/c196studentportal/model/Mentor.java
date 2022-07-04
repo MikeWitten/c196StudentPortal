@@ -1,10 +1,19 @@
 package com.wittenportfolio.c196studentportal.model;
 
+import android.arch.persistence.room.ColumnInfo;
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.PrimaryKey;
+
+@Entity(tableName = "Mentors")
 public class Mentor {
 
+    @PrimaryKey(autoGenerate = true)
     private Integer id;
+    @ColumnInfo(name = "name")
     private String name;
+    @ColumnInfo(name = "phone")
     private String phone;
+    @ColumnInfo(name = "email")
     private String email;
 
     public Mentor(Integer id, String name, String phone, String email) {
@@ -16,10 +25,6 @@ public class Mentor {
 
     public Integer getId() {
         return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
     }
 
     public String getName() {
@@ -44,5 +49,15 @@ public class Mentor {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    @Override
+    public String toString() {
+        return "Mentor{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", phone='" + phone + '\'' +
+                ", email='" + email + '\'' +
+                '}';
     }
 }
